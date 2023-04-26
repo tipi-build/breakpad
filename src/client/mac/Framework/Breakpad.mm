@@ -617,14 +617,14 @@ bool Breakpad::ExtractParameters(NSDictionary* parameters) {
   struct timeval tv;
   gettimeofday(&tv, NULL);
   char timeStartedString[32];
-  sprintf(timeStartedString, "%zd", tv.tv_sec);
+  snprintf(timeStartedString, 32, "%zd", tv.tv_sec);
   dictionary.SetKeyValue(BREAKPAD_PROCESS_START_TIME,
                          timeStartedString);
 
   if (logFilePaths) {
     char logFileKey[255];
     for(unsigned int i = 0; i < [logFilePaths count]; i++) {
-      sprintf(logFileKey,"%s%d", BREAKPAD_LOGFILE_KEY_PREFIX, i);
+      snprintf(logFileKey, 255, "%s%d", BREAKPAD_LOGFILE_KEY_PREFIX, i);
       dictionary.SetKeyValue(logFileKey,
                              [[logFilePaths objectAtIndex:i]
                                fileSystemRepresentation]);

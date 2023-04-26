@@ -178,7 +178,7 @@ static void PrintRegisters(const CallStack *stack, const string &cpu) {
       sequence = 0;
       char buffer[5];
       for (int i = 0; i < MD_CONTEXT_PPC_GPR_COUNT; ++i) {
-        sprintf(buffer, "r%d", i);
+        snprintf(buffer, 5, "r%d", i);
         sequence = PrintRegister(buffer, frame_ppc->context.gpr[i], sequence);
       }
     } else {

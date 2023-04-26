@@ -319,7 +319,7 @@ NSDictionary *readConfigurationData(const char *configFile) {
     char tmpFilenameTemplate[100];
 
     // Generate a template based on the log filename
-    sprintf(tmpFilenameTemplate,"%s/%s-XXXX", tmpDir,
+    snprintf(tmpFilenameTemplate, 100, "%s/%s-XXXX", tmpDir,
             [[logPath lastPathComponent] fileSystemRepresentation]);
 
     char *tmpFile = mktemp(tmpFilenameTemplate);

@@ -402,7 +402,7 @@ bool Breakpad::ExtractParameters(NSDictionary* parameters) {
   struct timeval tv;
   gettimeofday(&tv, NULL);
   char timeStartedString[32];
-  sprintf(timeStartedString, "%zd", tv.tv_sec);
+  snprintf(timeStartedString, 32, "%zd", tv.tv_sec);
   dictionary.SetKeyValue(BREAKPAD_PROCESS_START_TIME, timeStartedString);
 
   if (serverParameters) {
