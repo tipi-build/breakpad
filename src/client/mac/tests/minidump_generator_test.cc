@@ -139,7 +139,7 @@ TEST_F(MinidumpGeneratorTest, OutOfProcess) {
   const int kTimeoutMs = 2000;
   // Create a mach port to receive the child task on.
   char machPortName[128];
-  sprintf(machPortName, "MinidumpGeneratorTest.OutOfProcess.%d", getpid());
+  snprintf(machPortName, 128, "MinidumpGeneratorTest.OutOfProcess.%d", getpid());
   ReceivePort parent_recv_port(machPortName);
 
   // Give the child process a pipe to block on.
@@ -235,7 +235,7 @@ TEST_F(MinidumpGeneratorTest, CrossArchitectureDump) {
   const int kTimeoutMs = 5000;
   // Create a mach port to receive the child task on.
   char machPortName[128];
-  sprintf(machPortName,
+  snprintf(machPortName, 128,
           "MinidumpGeneratorTest.CrossArchitectureDump.%d", getpid());
 
   ReceivePort parent_recv_port(machPortName);

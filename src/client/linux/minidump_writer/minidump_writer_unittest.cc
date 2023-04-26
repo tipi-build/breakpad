@@ -537,7 +537,7 @@ TEST(MinidumpWriterTest, DeletedBinary) {
 
     // Pass the pipe fd and the number of threads as arguments.
     char pipe_fd_string[8];
-    sprintf(pipe_fd_string, "%d", fds[1]);
+    snprintf(pipe_fd_string, 8, "%d", fds[1]);
     execl(binpath.c_str(),
           binpath.c_str(),
           pipe_fd_string,
@@ -763,7 +763,7 @@ TEST(MinidumpWriterTest, MinidumpSizeLimit) {
   static const int kNumberOfThreadsInHelperProgram = 40;
 
   char number_of_threads_arg[3];
-  sprintf(number_of_threads_arg, "%d", kNumberOfThreadsInHelperProgram);
+  snprintf(number_of_threads_arg, 3, "%d", kNumberOfThreadsInHelperProgram);
 
   string helper_path(GetHelperBinary());
   if (helper_path.empty()) {
@@ -781,7 +781,7 @@ TEST(MinidumpWriterTest, MinidumpSizeLimit) {
 
     // Pass the pipe fd and the number of threads as arguments.
     char pipe_fd_string[8];
-    sprintf(pipe_fd_string, "%d", fds[1]);
+    snprintf(pipe_fd_string, 8, "%d", fds[1]);
     execl(helper_path.c_str(),
           helper_path.c_str(),
           pipe_fd_string,

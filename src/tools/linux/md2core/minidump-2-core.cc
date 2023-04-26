@@ -989,7 +989,7 @@ ParseModuleStream(const Options& options, CrashedProcess* crashinfo,
     const MDCVInfoPDB70* record = reinterpret_cast<const MDCVInfoPDB70*>(
         full_file.GetData(rawmodule->cv_record.rva, MDCVInfoPDB70_minsize));
     char guid[40];
-    sprintf(guid, "%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X",
+    snprintf(guid, 40, "%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X",
             record->signature.data1, record->signature.data2,
             record->signature.data3,
             record->signature.data4[0], record->signature.data4[1],

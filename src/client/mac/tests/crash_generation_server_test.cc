@@ -87,7 +87,7 @@ public:
   bool filter_callback_called;
 
   void SetUp() {
-    sprintf(mach_port_name,
+    snprintf(mach_port_name, 128,
             "com.google.breakpad.ServerTest.%d.%d", getpid(),
             CrashGenerationServerTest::i++);
     child_pid = (pid_t)-1;

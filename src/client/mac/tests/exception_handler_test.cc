@@ -238,7 +238,7 @@ TEST_F(ExceptionHandlerTest, DumpChildProcess) {
   const int kTimeoutMs = 2000;
   // Create a mach port to receive the child task on.
   char machPortName[128];
-  sprintf(machPortName, "ExceptionHandlerTest.%d", getpid());
+  snprintf(machPortName, 128, "ExceptionHandlerTest.%d", getpid());
   ReceivePort parent_recv_port(machPortName);
 
   // Give the child process a pipe to block on.

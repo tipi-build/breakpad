@@ -87,8 +87,8 @@ TEST(LongStringDictionary, Iterator) {
 
   // Set a bunch of key/value pairs like key0/value0, key1/value1, ...
   for (int i = 0; i < kPartitionIndex; ++i) {
-    sprintf(key, "key%d", i);
-    sprintf(value, "value%d", i);
+    snprintf(key, LongStringDictionary::key_size, "key%d", i);
+    snprintf(value, LongStringDictionary::value_size, "value%d", i);
     dict->SetKeyValue(key, value);
   }
   expectedDictionarySize = kPartitionIndex;
@@ -107,8 +107,8 @@ TEST(LongStringDictionary, Iterator) {
 
   // Set some more key/value pairs like key59/value59, key60/value60, ...
   for (int i = kPartitionIndex; i < kDictionaryCapacity; ++i) {
-    sprintf(key, "key%d", i);
-    sprintf(value, "value%d", i);
+    snprintf(key, LongStringDictionary::key_size, "key%d", i);
+    snprintf(value, LongStringDictionary::value_size, "value%d", i);
     dict->SetKeyValue(key, value);
   }
   expectedDictionarySize += kDictionaryCapacity - kPartitionIndex;

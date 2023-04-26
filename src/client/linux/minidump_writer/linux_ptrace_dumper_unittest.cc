@@ -70,7 +70,7 @@ namespace {
 
 pid_t SetupChildProcess(int number_of_threads) {
   char kNumberOfThreadsArgument[2];
-  sprintf(kNumberOfThreadsArgument, "%d", number_of_threads);
+  snprintf(kNumberOfThreadsArgument, 2, "%d", number_of_threads);
 
   int fds[2];
   EXPECT_NE(-1, pipe(fds));
@@ -88,7 +88,7 @@ pid_t SetupChildProcess(int number_of_threads) {
 
     // Pass the pipe fd and the number of threads as arguments.
     char pipe_fd_string[8];
-    sprintf(pipe_fd_string, "%d", fds[1]);
+    snprintf(pipe_fd_string, 8, "%d", fds[1]);
     execl(helper_path.c_str(),
           "linux_dumper_unittest_helper",
           pipe_fd_string,
