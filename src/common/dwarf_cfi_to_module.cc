@@ -35,7 +35,6 @@
 // See dwarf_cfi_to_module.h for details.
 
 #include <sstream>
-#include <array>
 
 #include "common/dwarf_cfi_to_module.h"
 
@@ -186,7 +185,7 @@ string DwarfCFIToModule::RegisterName(int i) {
 
   reporter_->UnnamedRegister(entry_offset_, reg);
   char buf[30];
-  snprintf(buf, std::size(buf), "unnamed_register%u", reg);
+  snprintf(buf, 30, "unnamed_register%u", reg);
   return buf;
 }
 
